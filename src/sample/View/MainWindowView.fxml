@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.121"
+          xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.MainWindowController">
+   <Pane prefHeight="600.0" prefWidth="700.0">
+      <Button id="browseForImageButton" fx:id="browseForImageButton" layoutX="361.0" layoutY="206.0"
+              mnemonicParsing="false" onAction="#browseForImageButtonAction" text="Przeglądaj:"/>
+      <Button id="helpButton" fx:id="helpButton" layoutX="500.0" layoutY="14.0" mnemonicParsing="false"
+              onAction="#helpButtonAction" text="Pomoc do programu"/>
+      <CheckBox id="encryptCheckBox" fx:id="encryptCheckBox" layoutX="214.0" layoutY="435.0" mnemonicParsing="false"
+                onAction="#encryptCheckBoxAction" text="Ukrywanie"/>
+      <CheckBox id="decryptCheckBox" fx:id="decryptCheckBox" layoutX="338.0" layoutY="435.0" mnemonicParsing="false"
+                onAction="#decryptCheckBoxAction" text="Odkodowywanie"/>
+      <Label layoutX="152.0" layoutY="174.0" text="Wybierz plik graficzny:"/>
+      <TextField id="selectedImageTextField" fx:id="selectedImageTextField" layoutX="152.0" layoutY="206.0"
+                 text="Twój plik graficzny:"/>
+      <TextField id="selectedDataTextField" fx:id="selectedDataTextField" layoutX="169.0" layoutY="482.0"
+                 text="Twój plik wiadomości:"/>
+      <Button id="browseForText" fx:id="browseForText" layoutX="382.0" layoutY="482.0" mnemonicParsing="false"
+              onAction="#browseForTextAction" text="Przeglądaj:"/>
+      <ImageView id="logo" fx:id="logo" fitHeight="180.0" fitWidth="444.0" layoutX="48.0" pickOnBounds="true"
+                 preserveRatio="true">
+         <Image url="@../steganographer.png"/>
+      </ImageView>
+      <Button layoutX="308.0" layoutY="530.0" mnemonicParsing="false" text="Zatwierdź"/>
+      <Label layoutX="110.0" layoutY="319.0" text="Podgląd:"/>
+      <ImageView id="miniatureOfSelected" fx:id="miniatureOfSelected" fitHeight="150.0" fitWidth="200.0"
+                 layoutX="226.0" layoutY="265.0" pickOnBounds="true" preserveRatio="true"/>
+   </Pane>
+</GridPane>
