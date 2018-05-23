@@ -27,32 +27,32 @@ public class MainWindowController {
     private File image;
     private File message;
 
-    public void browseForImageButtonAction(ActionEvent actionEvent) {
+    public void browseForImageButtonAction() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Znajdz plik z obrazem");
         image = fileChooser.showOpenDialog(MainWindow.getMainWindowStage());
         selectedImageTextField.setText(image.getAbsolutePath());
     }
 
-    public void helpButtonAction(ActionEvent actionEvent) {
+    public void helpButtonAction() {
     }
 
-    public void encryptCheckBoxAction(ActionEvent actionEvent) {
+    public void encryptCheckBoxAction() {
         decryptCheckBox.setSelected(false);
     }
 
-    public void decryptCheckBoxAction(ActionEvent actionEvent) {
+    public void decryptCheckBoxAction() {
         encryptCheckBox.setSelected(false);
     }
 
-    public void browseForTextAction(ActionEvent actionEvent) {
+    public void browseForTextAction() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Znajdz plik z komunikatem");
         message = fileChooser.showOpenDialog(MainWindow.getMainWindowStage());
         selectedDataTextField.setText(message.getAbsolutePath());
     }
 
-    public void submitButtonAction(ActionEvent actionEvent) {
+    public void submitButtonAction() {
         SecretImage secretImage = new SecretImage(image.getAbsolutePath());
         if (encryptCheckBox.isSelected()){
             SecretMessage secretMessage = new SecretMessage(message.getAbsolutePath());
