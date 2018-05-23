@@ -9,10 +9,11 @@ import sample.Main;
 import java.io.IOException;
 
 public class MainWindow {
-    private Stage mainWindowStage;
+
+    private static Stage mainWindowStage;
 
     public MainWindow(Stage mainWindowStage){
-        this.mainWindowStage = mainWindowStage;
+        MainWindow.mainWindowStage = mainWindowStage;
     }
 
     public void start(){
@@ -28,5 +29,12 @@ public class MainWindow {
         mainWindowStage.setTitle("Steganographer");
         mainWindowStage.setScene(scene);
         mainWindowStage.show();
+    }
+    public static Stage getMainWindowStage() {
+        return mainWindowStage;
+    }
+
+    public static void setMainWindowStage(Stage mainWindowStage) {
+        MainWindow.mainWindowStage = mainWindowStage;
     }
 }
