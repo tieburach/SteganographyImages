@@ -15,19 +15,19 @@
    <Pane prefHeight="600.0" prefWidth="700.0" stylesheets="@../css/style.css">
       <Button id="browseForImageButton" fx:id="browseForImageButton" layoutX="554.0" layoutY="204.0" mnemonicParsing="false" onAction="#browseForImageButtonAction" styleClass="dark-blue" stylesheets="@../css/style.css" text="Przeglądaj:" />
       <Button id="helpButton" fx:id="helpButton" layoutX="528.0" layoutY="14.0" mnemonicParsing="false" onAction="#helpButtonAction" styleClass="dark-blue" stylesheets="@../css/style.css" text="Pomoc do programu" />
-      <CheckBox id="encryptCheckBox" fx:id="encryptCheckBox" layoutX="178.0" layoutY="446.0" mnemonicParsing="false" onAction="#encryptCheckBoxAction" text="Ukrywanie" />
-      <CheckBox id="decryptCheckBox" fx:id="decryptCheckBox" layoutX="357.0" layoutY="446.0" mnemonicParsing="false" onAction="#decryptCheckBoxAction" text="Odkodowywanie" />
-      <Label layoutX="14.0" layoutY="211.0" text="Wybierz plik graficzny:" />
+      <CheckBox id="encryptCheckBox" fx:id="encryptCheckBox" layoutX="178.0" layoutY="446.0" mnemonicParsing="false" onAction="#encryptCheckBoxAction" selected="true" text="Ukrywanie" visible="false" />
+      <CheckBox id="decryptCheckBox" fx:id="decryptCheckBox" layoutX="357.0" layoutY="446.0" mnemonicParsing="false" onAction="#decryptCheckBoxAction" text="Odkodowywanie" visible="false" />
+      <Label id="wybierzObrazLabel" fx:id="wybierzObrazLabel" layoutX="14.0" layoutY="211.0" text="Wybierz plik graficzny:" />
       <TextField id="selectedImageTextField" fx:id="selectedImageTextField" layoutX="199.0" layoutY="206.0" prefHeight="31.0" prefWidth="329.0" text="Twój plik graficzny:" />
-      <TextField id="selectedDataTextField" fx:id="selectedDataTextField" layoutX="199.0" layoutY="482.0" prefHeight="31.0" prefWidth="329.0" text="Twój plik wiadomości:" />
-      <Button id="browseForText" fx:id="browseForText" layoutX="554.0" layoutY="480.0" mnemonicParsing="false" onAction="#browseForTextAction" styleClass="dark-blue" stylesheets="@../css/style.css" text="Przeglądaj:" />
+      <TextField id="selectedDataTextField" fx:id="selectedDataTextField" layoutX="199.0" layoutY="482.0" prefHeight="31.0" prefWidth="329.0" text="Twój plik z wiadomością:" visible="false" />
+      <Button id="browseForText" fx:id="browseForText" layoutX="554.0" layoutY="480.0" mnemonicParsing="false" onAction="#browseForTextAction" styleClass="dark-blue" stylesheets="@../css/style.css" text="Przeglądaj:" visible="false" />
       <ImageView id="logo" fx:id="logo" fitHeight="180.0" fitWidth="444.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../steganographer.png" />
       </ImageView>
-      <Button id="submitButton" fx:id="submitButton" onAction="#submitButtonAction" layoutX="308.0" layoutY="530.0" mnemonicParsing="false" stylesheets="@../css/style.css" text="Zatwierdź" />
-      <Label layoutX="110.0" layoutY="319.0" text="Podgląd:" />
-      <ImageView id="miniatureOfSelected" fx:id="miniatureOfSelected" fitHeight="150.0" fitWidth="200.0" layoutX="226.0" layoutY="265.0" pickOnBounds="true" preserveRatio="true" />
-      <Label layoutX="14.0" layoutY="487.0" text="Wybierz plik tekstowy:" />
+      <Button id="submitButton" fx:id="submitButton" layoutX="308.0" layoutY="530.0" mnemonicParsing="false" onAction="#submitButtonAction" stylesheets="@../css/style.css" text="Zatwierdź" visible="false" />
+      <Label id="podgladLabel" fx:id="podgladLabel" layoutX="110.0" layoutY="319.0" text="Podgląd:" visible="false" />
+      <ImageView id="miniatureOfSelected" fx:id="miniatureOfSelected" fitHeight="150.0" fitWidth="200.0" layoutX="226.0" layoutY="265.0" pickOnBounds="true" preserveRatio="true" visible="false" />
+      <Label id="wybierzPlikLabel" fx:id="wybierzPlikLabel" layoutX="14.0" layoutY="487.0" text="Wybierz plik tekstowy:" visible="false" />
    </Pane>
    <columnConstraints>
       <ColumnConstraints />
