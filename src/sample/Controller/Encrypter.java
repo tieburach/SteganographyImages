@@ -3,8 +3,6 @@ package sample.Controller;
 import sample.Model.SecretImage;
 import sample.Model.SecretMessage;
 
-import java.io.IOException;
-
 class Encrypter {
     private SecretImage secretImage;
     private SecretMessage secretMessage;
@@ -15,7 +13,18 @@ class Encrypter {
     }
 
     void run(){
+        //wczytanie pliku tekstowego
         secretMessage.readFile();
+        //wypisanie ala ma kota
         secretMessage.toBinary();
+
+        //wczytanie pliku graficznego
+        secretImage.loadImage();
+        //zaladowanie pixelkow
+        secretImage.loadPixels();
+        //
+        secretImage.encryptPhoto();
+        secretMessage.saveFile();
+        secretImage.saveChangedImage();
     }
 }

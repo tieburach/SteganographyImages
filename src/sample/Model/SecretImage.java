@@ -9,8 +9,16 @@ public class SecretImage {
 
     private int[][] pixels;
     private String filepath;
-    private BufferedImage bufferedImage = null;
+
+    public static BufferedImage getBufferedImage() {
+        return bufferedImage;
+    }
+
+    private static BufferedImage bufferedImage = null;
     private static boolean encrypting = true;
+    private int width;
+    private int height;
+    private Pixels pxls;
 
     public SecretImage(String filepath) {
         this.filepath = filepath;
@@ -24,14 +32,40 @@ public class SecretImage {
         }
     }
 
-    public void loadPixels(int width, int height) {
+    public void loadPixels() {
+        width = bufferedImage.getWidth();
+        height = bufferedImage.getHeight();
         pixels = new int[width][height];
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
-                pixels[i][j] = bufferedImage.getRGB(i, j);
+                int color = bufferedImage.getRGB(i, j);
+                pixels[i][j] = color;
             }
         }
+        pxls = new Pixels(pixels, width, height);
     }
+
+    public void encryptPhoto(){
+        pxls.setNewRGB();
+    }
+
+    public void saveChangedImage(){
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
+                bufferedImage.setRGB(i, j, pixels[i][j]);
+
+            }
+        }
+        File outputfile = new File("ZAMIENIONE.jpg");
+        try {
+            ImageIO.write(bufferedImage, "jpg", outputfile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
 
     public static boolean isEncrypting() {
         return encrypting;

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.ResultWindowController">
+   <children>
+      <Pane layoutX="118.0" layoutY="14.0" prefHeight="400.0" prefWidth="600.0" styleClass="tlo" stylesheets="@../css/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+             <Button id="finishButton" fx:id="finishButton" layoutX="268.0" layoutY="337.0" mnemonicParsing="false" onAction="#finishButtonAction" text="Zakończ" />
+            <Label layoutX="27.0" layoutY="24.0" text="Zaszyfrowana wiadomość:" />
+            <TextArea id="encryptedMessageTextArea" fx:id="encryptedMessageTextArea" layoutX="14.0" layoutY="56.0" prefHeight="270.0" prefWidth="249.0" wrapText="true" />
+            <ImageView id="encryptedPhotoImage" fx:id="encryptedPhotoImage" fitHeight="270.0" fitWidth="303.0" layoutX="271.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true" styleClass="img-view" />
+            <Label layoutX="351.0" layoutY="24.0" text="Podgląd obrazu:" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

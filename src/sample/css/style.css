@@ -73,3 +73,19 @@
     -fx-padding: 10 15 13 15;
     -fx-background-insets: 2 0 0 0, 2 0 3 0, 2 0 4 0, 2 0 5 0;
 }
+
+.img-view {
+    -fx-stroke-width: 2.0;
+}
+
+.img-view:hover {
+    -fx-stroke: #70c0e7;
+}
+
+.img-view:selected {
+    -fx-stroke: #26A0DA;
+}
+
+.tlo {
+    -fx-background-color: lightskyblue;
+}

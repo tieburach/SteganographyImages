@@ -1,21 +1,15 @@
 package sample.Controller;
 
-import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.control.*;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import sample.Model.MainWindow;
+import sample.Model.ResultWindow;
 import sample.Model.SecretImage;
 import sample.Model.SecretMessage;
 
-import javax.imageio.ImageIO;
-import java.awt.*;
 import java.io.File;
-import java.io.IOException;
 
 public class MainWindowController {
 
@@ -104,20 +98,8 @@ public class MainWindowController {
             SecretMessage secretMessage = new SecretMessage(message.getAbsolutePath());
             Encrypter encrypter = new Encrypter(secretImage,secretMessage);
             encrypter.run();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            ResultWindow resultWindow = new ResultWindow(MainWindow.getMainWindowStage());
+            resultWindow.start();
         } else {
             SecretMessage secretMessage = new SecretMessage(image.getParent());
             Decrypter decrypter = new Decrypter(secretImage, secretMessage);

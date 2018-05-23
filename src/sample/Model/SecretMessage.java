@@ -5,7 +5,12 @@ import javafx.scene.control.Alert;
 import java.io.*;
 
 public class SecretMessage {
-    private String message;
+
+    public static String getMessage() {
+        return message;
+    }
+
+    private static String message;
     private String filePath;
 
     public SecretMessage(String filePath) {
@@ -40,27 +45,20 @@ public class SecretMessage {
         }
     }
 
-    public void toBinary() {
+    public static String toBinary() {
         System.out.println(message);
         byte[] bytes = message.getBytes();
         StringBuilder binary = new StringBuilder();
-
-        int j = 0;
-        for (byte b : bytes) {
-            j++;
-            char c = (char) (b & 0xFF);
-            System.out.println("ktory element: " + j);
-            System.out.println("jego wartosc: " + c);
-            System.out.println("a bitowo: " + b);
-        }
         for (byte b : bytes) {
             int val = b;
             for (int i = 0; i < 8; i++) {
                 binary.append((val & 128) == 0 ? 0 : 1);
                 val <<= 1;
             }
-            binary.append(' ');
         }
         System.out.println("'" + message + "' to binary: " + binary.toString());
+        return binary.toString();
     }
+
+
 }
