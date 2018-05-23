@@ -16,7 +16,7 @@ public class SecretMessage {
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath));
 
-            String textLine = null;
+            String textLine;
             StringBuilder sb = new StringBuilder();
 
             while ((textLine = bufferedReader.readLine()) != null) {
