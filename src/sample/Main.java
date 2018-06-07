@@ -3,7 +3,6 @@ package sample;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import sample.Model.MainWindow;
-import sample.Model.Pixels;
 
 public class Main extends Application {
 

@@ -19,7 +19,7 @@ public class ResultWindow {
     }
 
     public void start(){
-        MainWindow.getMainWindowStage().setWidth(560);
+        MainWindow.getMainWindowStage().setWidth(620);
         MainWindow.getMainWindowStage().setHeight(440);
         Parent root = null;
         try {

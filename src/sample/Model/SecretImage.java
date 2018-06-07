@@ -15,9 +15,8 @@ public class SecretImage {
     }
 
     private static BufferedImage bufferedImage = null;
-    private static boolean encrypting = true;
-    private int width;
-    private int height;
+    private static int width;
+    private static int height;
     private Pixels pxls;
 
     public SecretImage(String filepath) {
@@ -45,33 +44,36 @@ public class SecretImage {
         pxls = new Pixels(pixels, width, height);
     }
 
-    public void encryptPhoto(){
-        pxls.setNewRGB();
+    public void encryptPhoto(int howMany) {
+        pxls.setNewRGB(howMany);
     }
 
-    public void saveChangedImage(){
+    public String decryptPhoto(int howMany) {
+        String binary = pxls.getLast(howMany);
+        StringBuilder output = new StringBuilder();
+        StringBuilder temporary = new StringBuilder();
+        for (int i = 1; i <= binary.length(); i++) {
+            temporary.append(binary.charAt(i - 1));
+            if (i % 8 == 0) {
+                output.append((char) Integer.parseInt(temporary.toString(), 2));
+                temporary = new StringBuilder();
+            }
+        }
+        String[] parts = output.toString().split("%");
+        return parts[0];
+    }
+
+    public void saveChangedImage() {
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 bufferedImage.setRGB(i, j, pixels[i][j]);
-
             }
         }
-        File outputfile = new File("ZAMIENIONE.jpg");
+        File outputfile = new File("ZAMIENIONE.png");
         try {
-            ImageIO.write(bufferedImage, "jpg", outputfile);
+            ImageIO.write(bufferedImage,"png" , outputfile);
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-
-
-
-    public static boolean isEncrypting() {
-        return encrypting;
-    }
-
-    public static void setEncrypting(boolean encrypting) {
-        SecretImage.encrypting = encrypting;
     }
 }

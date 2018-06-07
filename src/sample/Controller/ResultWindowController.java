@@ -1,7 +1,6 @@
 package sample.Controller;
 
 import javafx.embed.swing.SwingFXUtils;
-import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
@@ -13,7 +12,7 @@ public class ResultWindowController {
     public TextArea encryptedMessageTextArea;
     public ImageView encryptedPhotoImage;
 
-    public void finishButtonAction(ActionEvent actionEvent) {
+    public void finishButtonAction() {
         System.exit(0);
     }
 

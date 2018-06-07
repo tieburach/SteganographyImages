@@ -12,19 +12,18 @@ class Encrypter {
         this.secretMessage = secretMessage;
     }
 
-    void run(){
+    void run(int howMany){
         //wczytanie pliku tekstowego
         secretMessage.readFile();
         //wypisanie ala ma kota
-        secretMessage.toBinary();
+        SecretMessage.toBinary();
 
         //wczytanie pliku graficznego
         secretImage.loadImage();
         //zaladowanie pixelkow
         secretImage.loadPixels();
         //
-        secretImage.encryptPhoto();
-        secretMessage.saveFile();
+        secretImage.encryptPhoto(howMany);
         secretImage.saveChangedImage();
     }
 }
