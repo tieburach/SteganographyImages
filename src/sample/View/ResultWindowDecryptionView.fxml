@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.ResultWindowDecryptionController">
+   <children>
+      <Pane layoutX="118.0" layoutY="14.0" prefHeight="400.0" prefWidth="606.0" styleClass="tlo" stylesheets="@../css/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-6.0" AnchorPane.topAnchor="0.0">
+         <children>
+             <Button id="finishButton" fx:id="finishButton" layoutX="268.0" layoutY="337.0" mnemonicParsing="false" onAction="#finishButtonAction" text="Zakończ" />
+            <Label layoutX="27.0" layoutY="24.0" text="Zaszyfrowana wiadomość:" />
+            <TextArea id="encryptedMessageTextArea" fx:id="encryptedMessageTextArea" layoutX="13.0" layoutY="56.0" prefHeight="212.0" prefWidth="499.0" wrapText="true" />
+            <Label layoutX="27.0" layoutY="281.0" prefHeight="47.0" prefWidth="499.0" text="Plik z treścią został zapisany w folderze, w którym został wybrany obraz do odkodowania" wrapText="true" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
