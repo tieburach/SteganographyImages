@@ -17,81 +17,93 @@ class Pixels {
     private static int[][] pixels;
 
     private int getGreen(int column, int row) {
-        return ((pixels[column][row] & 0xff00) >> 8);
+        return ((pixels[column][row] >> 8) & 0xff);
     }
 
     private int getBlue(int column, int row) {
-        return (pixels[column][row] & 0xff);
+        return ((pixels[column][row]) & 0xff);
     }
 
     private int getRed(int column, int row) {
-        return ((pixels[column][row] & 0xff0000) >> 16);
+        return ((pixels[column][row] >> 16) & 0xff);
     }
 
+    private void printPixels(){
+        System.out.println("STARE");
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 20; j++) {
+                System.out.print("" + pixels[i][j]);
+                }
+            System.out.println("\n");
+            }
+    }
 
     void setNewRGB(int howMany) {
-
         ArrayList<String> packages = divideIntoPackages(howMany);
         int listElement = 0;
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 if (listElement < packages.size()) {
                     String together = packages.get(listElement);
-                    String first = "";
-                    StringBuilder second = new StringBuilder();StringBuilder third = new StringBuilder();
-                    if (together.length() == 3*howMany) {
+                    String first = "", second = "", third = "";
+
+                    if (together.length() == 3 * howMany) {
                         first = together.substring(0, howMany);
-                        second = new StringBuilder(together.substring(howMany, (2 * howMany)));
-                        third = new StringBuilder(together.substring(2 * howMany, 3 * howMany));
-                    } else if (together.length() == 2*howMany) {
+                        second = together.substring(howMany, (2 * howMany));
+                        third = (together.substring(2 * howMany, 3 * howMany));
+                    } else if (together.length() == 2 * howMany) {
                         first = together.substring(0, howMany);
-                        second = new StringBuilder(together.substring(howMany, 2 * howMany));
+                        second = together.substring(howMany, 2 * howMany);
                         for (int k = 0; k < howMany; k++) {
-                            third.append("0");
+                            third += "0";
                         }
                     } else {
-                        first = together.substring(0, howMany);
+                        try {
+                            first = together.substring(0, howMany);
+                        } catch (Exception ignored) {
+
+                        }
                         for (int k = 0; k < howMany; k++) {
-                            second.append("0");
-                            third.append("0");
+                            second += "0";
+                            third += "0";
                         }
                     }
                     int newRed = binaryToInteger(setRed(i, j, first, howMany));
-                    int newGreen = binaryToInteger(setGreen(i, j, second.toString(), howMany));
-                    int newBlue = binaryToInteger(setBlue(i, j, third.toString(),howMany));
-
+                    int newGreen = binaryToInteger(setGreen(i, j, second, howMany));
+                    int newBlue = binaryToInteger(setBlue(i, j, third, howMany));
                     Color color = new Color(newRed, newGreen, newBlue);
                     pixels[i][j] = color.getRGB();
                     listElement++;
                 }
             }
         }
+        printPixels();
     }
 
     private String setGreen(int column, int row, String last, int howMany) {
-        String first = getFirstElements(Integer.toBinaryString(getGreen(column, row)), howMany);
+        String first = getFirstElements(Pixels.toBinaryString(getGreen(column, row)), howMany);
         first += last;
         return first;
     }
 
     private String setBlue(int column, int row, String last, int howMany) {
-        String first = getFirstElements(Integer.toBinaryString(getBlue(column, row)),howMany);
+        String first = getFirstElements(Pixels.toBinaryString(getBlue(column, row)),howMany);
         first += last;
         return first;
     }
 
     private String setRed(int column, int row, String last, int howMany) {
-        String first = getFirstElements(Integer.toBinaryString(getRed(column, row)),howMany);
+        String first = getFirstElements(Pixels.toBinaryString(getRed(column, row)),howMany);
         first += last;
         return first;
     }
 
     private static String getFirstElements(String binary, int x) {
         if (binary.length() < 8) {
-            StringBuilder zero = new StringBuilder("0");
+            String zero = "0";
             int howManyInserts = 8 - binary.length();
             for (int i = 0; i < howManyInserts; i++) {
-                zero.append(binary);
+                zero= zero + binary;
             }
             return zero.substring(0, 8-x);
         }
@@ -134,23 +146,24 @@ class Pixels {
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                     String wholeRed, wholeGreen, wholeBlue;
-                    wholeRed = (Integer.toBinaryString(getRed(i, j)));
-                    if (wholeRed.length() < 4) {
-                        wholeRed = "00" + wholeRed;
-                    }
-                    wholeGreen = (Integer.toBinaryString(getGreen(i, j)));
-                    if (wholeGreen.length() < 4) {
-                        wholeGreen = "00" + wholeGreen;
-                    }
-                    wholeBlue = (Integer.toBinaryString(getBlue(i, j)));
-                    if (wholeBlue.length() < 4) {
-                        wholeBlue = "00" + wholeBlue;
-                    }
+                    wholeRed = (Pixels.toBinaryString(getRed(i, j)));
+                    wholeGreen = (Pixels.toBinaryString(getGreen(i, j)));
+                    wholeBlue = (Pixels.toBinaryString(getBlue(i, j)));
                     message.append(wholeRed.substring(wholeRed.length() - howMany, wholeRed.length()));
                     message.append(wholeGreen.substring(wholeGreen.length() - howMany, wholeGreen.length()));
                     message.append(wholeBlue.substring(wholeBlue.length() - howMany, wholeBlue.length()));
             }
         }
         return message.toString();
+    }
+
+
+    private static String toBinaryString(int value){
+        String result;
+        result = Integer.toBinaryString(value);
+        while (result.length()<8){
+            result = "0" + result;
+        }
+        return result;
     }
 }

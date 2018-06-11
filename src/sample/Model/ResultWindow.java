@@ -12,8 +12,6 @@ public class ResultWindow {
 
     private static Stage resultWindowStage;
 
-    private static Scene scene;
-
     public ResultWindow(Stage resultWindowStage){
         ResultWindow.resultWindowStage = resultWindowStage;
     }
@@ -28,13 +26,10 @@ public class ResultWindow {
             e.printStackTrace();
         }
         assert root != null;
-        scene = new Scene(root, 550, 400);
+        Scene scene = new Scene(root, 550, 400);
         String css = Main.class.getResource("css/style.css").toExternalForm();
         scene.getStylesheets().add(css);
         resultWindowStage.setScene(scene);
         resultWindowStage.show();
-    }
-    public static Stage getResultWindowStage() {
-        return resultWindowStage;
     }
 }

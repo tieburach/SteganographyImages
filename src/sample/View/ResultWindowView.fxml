@@ -6,17 +6,22 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.ResultWindowController">
-   <children>
-      <Pane layoutX="118.0" layoutY="14.0" prefHeight="400.0" prefWidth="600.0" styleClass="tlo" stylesheets="@../css/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-             <Button id="finishButton" fx:id="finishButton" layoutX="268.0" layoutY="337.0" mnemonicParsing="false" onAction="#finishButtonAction" text="Zakończ" />
-            <Label layoutX="27.0" layoutY="24.0" text="Zaszyfrowana wiadomość:" />
-            <TextArea id="encryptedMessageTextArea" fx:id="encryptedMessageTextArea" layoutX="14.0" layoutY="56.0" prefHeight="270.0" prefWidth="249.0" wrapText="true" />
-            <ImageView id="encryptedPhotoImage" fx:id="encryptedPhotoImage" fitHeight="270.0" fitWidth="303.0" layoutX="271.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true" styleClass="img-view" />
-            <Label layoutX="351.0" layoutY="24.0" text="Podgląd obrazu:" />
-         </children>
-      </Pane>
-   </children>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.ResultWindowController">
+   <Pane layoutX="118.0" layoutY="14.0" prefHeight="400.0" prefWidth="600.0" styleClass="tlo"
+         stylesheets="@../css/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+         AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Button id="finishButton" fx:id="finishButton" layoutX="268.0" layoutY="337.0" mnemonicParsing="false"
+              onAction="#finishButtonAction" text="Zakończ"/>
+      <Label layoutX="27.0" layoutY="24.0" text="Zaszyfrowana wiadomość:"/>
+      <Label layoutX="351.0" layoutY="24.0" text="Podgląd obrazu:"/>
+      <StackPane layoutX="308.0" layoutY="55.0" prefHeight="265.0" prefWidth="200.0" styleClass="paneBorder">
+         <ImageView id="encryptedPhotoImage" fx:id="encryptedPhotoImage" fitHeight="265.0" fitWidth="271.0"
+                    pickOnBounds="true" preserveRatio="true"/>
+      </StackPane>
+      <TextArea id="encryptedMessageTextArea" fx:id="encryptedMessageTextArea" layoutX="27.0" layoutY="55.0"
+                prefHeight="270.0" prefWidth="249.0" styleClass="paneBorder" wrapText="true"/>
+   </Pane>
 </AnchorPane>

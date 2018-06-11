@@ -11,8 +11,6 @@ import java.io.IOException;
 public class ResultWindowDecryption {
     private static Stage resultWindowDecryptionStage;
 
-    private static Scene scene;
-
     public ResultWindowDecryption(Stage resultWindowDecryptionStage){
         ResultWindowDecryption.resultWindowDecryptionStage = resultWindowDecryptionStage;
     }
@@ -27,7 +25,7 @@ public class ResultWindowDecryption {
             e.printStackTrace();
         }
         assert root != null;
-        scene = new Scene(root, 550, 400);
+        Scene scene = new Scene(root, 550, 400);
         String css = Main.class.getResource("css/style.css").toExternalForm();
         scene.getStylesheets().add(css);
         resultWindowDecryptionStage.setScene(scene);

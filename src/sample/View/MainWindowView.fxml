@@ -6,7 +6,8 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
-<?import java.lang.String?>
+<?import javafx.scene.layout.StackPane?>
+<?import java.lang.*?>
 <GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.MainWindowController">
    <Pane prefHeight="600.0" prefWidth="700.0" stylesheets="@../css/style.css">
       <Button id="browseForImageButton" fx:id="browseForImageButton" layoutX="575.0" layoutY="204.0" mnemonicParsing="false" onAction="#browseForImageButtonAction" styleClass="dark-blue" stylesheets="@../css/style.css" text="Przeglądaj:" />
@@ -21,25 +22,31 @@
          <Image url="@../steganographer.png" />
       </ImageView>
       <Button id="submitButton" fx:id="submitButton" layoutX="308.0" layoutY="530.0" mnemonicParsing="false" onAction="#submitButtonAction" stylesheets="@../css/style.css" text="Zatwierdź" />
-      <Label id="podgladLabel" fx:id="podgladLabel" layoutX="314.0" layoutY="340.0" text="Podgląd:" />
-      <ImageView id="miniatureOfSelected" fx:id="miniatureOfSelected" fitHeight="184.0" fitWidth="262.0" layoutX="392.0" layoutY="265.0" pickOnBounds="true" preserveRatio="true"/>
+      <Label id="podgladLabel" fx:id="podgladLabel" layoutX="325.0" layoutY="347.0" text="Podgląd:" />
       <Label id="wybierzPlikLabel" fx:id="wybierzPlikLabel" layoutX="14.0" layoutY="487.0" text="Wybierz plik tekstowy:" />
-      <ComboBox id="comboBox" fx:id="comboBox" layoutX="75.0" layoutY="346.0" prefHeight="31.0" prefWidth="71.0" onAction="#comboBoxAction">
+      <ComboBox id="comboBox" fx:id="comboBox" layoutX="75.0" layoutY="346.0" onAction="#comboBoxAction" prefHeight="31.0" prefWidth="71.0">
           <items>
               <FXCollections fx:factory="observableArrayList">
                   <String fx:value="1" />
                   <String fx:value="2" />
                   <String fx:value="3" />
+                  <String fx:value="4" />
+                  <String fx:value="5" />
+                  <String fx:value="6" />
               </FXCollections>
           </items>
       </ComboBox>
       <Label layoutX="14.0" layoutY="265.0" text="Wybierz co chcesz zrobić:" />
       <Label layoutX="14.0" layoutY="319.0" text="Wybierz ile bitów ostatnich:" />
       <Separator layoutY="255.0" prefHeight="3.0" prefWidth="700.0" />
-      <Separator layoutY="457.0" prefHeight="3.0" prefWidth="700.0" />
+      <Separator layoutY="466.0" prefHeight="3.0" prefWidth="700.0" />
       <Label layoutX="14.0" layoutY="386.0" text="Ile można zapisać:" />
       <Label layoutX="14.0" layoutY="424.0" text="Ile zapisujesz:" />
       <TextField id="howMuchCanWeSave" fx:id="howMuchCanWeSave" editable="false" layoutX="181.0" layoutY="380.0" prefHeight="31.0" prefWidth="110.0" text="0" />
       <TextField id="howMuchWeSave" fx:id="howMuchWeSave" editable="false" layoutX="181.0" layoutY="418.0" prefWidth="110.0" text="0" />
+       <StackPane layoutX="414.0" layoutY="265.0" prefHeight="164.0" prefWidth="240.0" styleClass="paneBorder">
+           <ImageView id="miniatureOfSelected" fx:id="miniatureOfSelected" fitHeight="184.0" fitWidth="262.0"
+                      pickOnBounds="true" preserveRatio="true"/>
+       </StackPane>
    </Pane>
 </GridPane>

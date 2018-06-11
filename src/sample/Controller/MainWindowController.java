@@ -10,24 +10,13 @@ import java.io.File;
 
 public class MainWindowController {
 
-    public Button browseForImageButton;
-    public Button helpButton;
-    public CheckBox encryptCheckBox;
-    public CheckBox decryptCheckBox;
-    public TextField selectedImageTextField;
-    public TextField selectedDataTextField;
-    public Button browseForText;
-    public ImageView logo;
-    public ImageView miniatureOfSelected;
-    public Button submitButton;
-    public Label wybierzPlikLabel;
-    public Label podgladLabel;
-    public Label wybierzObrazLabel;
+    public Button browseForImageButton, helpButton, browseForText, submitButton;
+    public CheckBox encryptCheckBox, decryptCheckBox;
+    public TextField selectedImageTextField, selectedDataTextField, howMuchCanWeSave, howMuchWeSave;
+    public ImageView logo, miniatureOfSelected;
+    public Label wybierzPlikLabel, podgladLabel, wybierzObrazLabel;
     public ComboBox comboBox;
-    public TextField howMuchCanWeSave;
-    public TextField howMuchWeSave;
-    private File image;
-    private File message;
+    private File image, message;
     private Image miniature;
 
     public void browseForImageButtonAction() {
@@ -104,29 +93,36 @@ public class MainWindowController {
     }
 
     public void submitButtonAction() {
-        String partsCan[] = howMuchCanWeSave.getText().split(" ");
-        String parts[] = howMuchWeSave.getText().split(" ");
-        if (Integer.parseInt(partsCan[0]) < Integer.parseInt(parts[0])) {
+        try {
+            String partsCan[] = howMuchCanWeSave.getText().split(" ");
+            String parts[] = howMuchWeSave.getText().split(" ");
+            if (Integer.parseInt(partsCan[0]) < Integer.parseInt(parts[0])) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Błąd");
+                alert.setHeaderText("Nie możesz przejść dalej");
+                alert.setContentText("Twój plik jest za duży żeby zmieścić go w obrazie. Spróbuj znaleźć większy obraz.");
+                alert.showAndWait();
+                return;
+            }
+            SecretImage secretImage = new SecretImage(image.getAbsolutePath());
+            if (encryptCheckBox.isSelected()) {
+                SecretMessage secretMessage = new SecretMessage(message.getAbsolutePath());
+                Encrypter encrypter = new Encrypter(secretImage, secretMessage);
+                encrypter.run(Integer.parseInt(comboBox.getValue().toString()));
+                ResultWindow resultWindow = new ResultWindow(MainWindow.getMainWindowStage());
+                resultWindow.start();
+            } else {
+                SecretMessage secretMessage = new SecretMessage(image.getParent());
+                Decrypter decrypter = new Decrypter(secretImage, secretMessage);
+                decrypter.run(Integer.parseInt(comboBox.getValue().toString()));
+                ResultWindowDecryption resultWindowDecryption = new ResultWindowDecryption(MainWindow.getMainWindowStage());
+                resultWindowDecryption.start();
+            }
+        }catch (Exception e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Błąd");
-            alert.setHeaderText("Nie możesz przejść dalej");
-            alert.setContentText("Twój plik jest za duży żeby zmieścić go w obrazie. Spróbuj znaleźć większy obraz.");
+            alert.setHeaderText("Nie można przejść dalej");
+            alert.setContentText("Nie wypełniłeś któregoś z pól. Wróć do programu i wypełnij wszystkie pola.");
             alert.showAndWait();
-            return;
-        }
-        SecretImage secretImage = new SecretImage(image.getAbsolutePath());
-        if (encryptCheckBox.isSelected()) {
-            SecretMessage secretMessage = new SecretMessage(message.getAbsolutePath());
-            Encrypter encrypter = new Encrypter(secretImage, secretMessage);
-            encrypter.run(Integer.parseInt(comboBox.getValue().toString()));
-            ResultWindow resultWindow = new ResultWindow(MainWindow.getMainWindowStage());
-            resultWindow.start();
-        } else {
-            SecretMessage secretMessage = new SecretMessage(image.getParent());
-            Decrypter decrypter = new Decrypter(secretImage, secretMessage);
-            decrypter.run(Integer.parseInt(comboBox.getValue().toString()));
-            ResultWindowDecryption resultWindowDecryption = new ResultWindowDecryption(MainWindow.getMainWindowStage());
-            resultWindowDecryption.start();
         }
     }
 

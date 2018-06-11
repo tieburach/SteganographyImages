@@ -36,6 +36,7 @@ public class SecretMessage {
         } catch (IOException e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Cos poszlo nie tak z odczytem pliku tekstowego.");
+            alert.showAndWait();
         }
     }
 

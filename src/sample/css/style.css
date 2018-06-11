@@ -79,3 +79,8 @@
     radial-gradient(center 50% 50%, radius 100%, #38424b, #20262b);
 }
 
+.paneBorder {
+    -fx-border-color:  #38424b;
+    -fx-border-insets: 5;
+    -fx-border-width: 3;
+}

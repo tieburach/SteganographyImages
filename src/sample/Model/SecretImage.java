@@ -26,6 +26,10 @@ public class SecretImage {
     public void loadImage() {
         try {
             bufferedImage = ImageIO.read(new File(filepath));
+            BufferedImage convertedImg = new BufferedImage(bufferedImage.getWidth(), bufferedImage.getHeight(), BufferedImage.TYPE_INT_RGB);
+            convertedImg.getGraphics().drawImage(bufferedImage, 0, 0, null);
+            convertedImg.getGraphics().dispose();
+            bufferedImage = convertedImg;
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -33,6 +37,7 @@ public class SecretImage {
 
     public void loadPixels() {
         width = bufferedImage.getWidth();
+        bufferedImage.getType();
         height = bufferedImage.getHeight();
         pixels = new int[width][height];
         for (int i = 0; i < width; i++) {
@@ -51,12 +56,12 @@ public class SecretImage {
     public String decryptPhoto(int howMany) {
         String binary = pxls.getLast(howMany);
         StringBuilder output = new StringBuilder();
-        StringBuilder temporary = new StringBuilder();
+        String temporary = "";
         for (int i = 1; i <= binary.length(); i++) {
-            temporary.append(binary.charAt(i - 1));
+            temporary += (binary.charAt(i - 1));
             if (i % 8 == 0) {
-                output.append((char) Integer.parseInt(temporary.toString(), 2));
-                temporary = new StringBuilder();
+                output.append((char) Integer.parseInt(temporary, 2));
+                temporary = "";
             }
         }
         String[] parts = output.toString().split("%");
@@ -69,7 +74,7 @@ public class SecretImage {
                 bufferedImage.setRGB(i, j, pixels[i][j]);
             }
         }
-        File outputfile = new File("ZAMIENIONE.png");
+        File outputfile = new File(new File(filepath).getParent() + "\\encryptedImage.png");
         try {
             ImageIO.write(bufferedImage,"png" , outputfile);
         } catch (IOException e) {

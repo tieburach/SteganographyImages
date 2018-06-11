@@ -12,12 +12,6 @@ public class MainWindow {
 
     private static Stage mainWindowStage;
 
-    public static Scene getScene() {
-        return scene;
-    }
-
-    private static Scene scene;
-
     public MainWindow(Stage mainWindowStage){
         MainWindow.mainWindowStage = mainWindowStage;
     }
@@ -30,7 +24,7 @@ public class MainWindow {
             e.printStackTrace();
         }
         assert root != null;
-        scene = new Scene(root, 700, 250);
+        Scene scene = new Scene(root, 700, 250);
         String css = Main.class.getResource("css/style.css").toExternalForm();
         scene.getStylesheets().add(css);
         mainWindowStage.setScene(scene);

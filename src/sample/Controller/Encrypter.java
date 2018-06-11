@@ -17,12 +17,10 @@ class Encrypter {
         secretMessage.readFile();
         //wypisanie ala ma kota
         SecretMessage.toBinary();
-
         //wczytanie pliku graficznego
         secretImage.loadImage();
         //zaladowanie pixelkow
         secretImage.loadPixels();
-        //
         secretImage.encryptPhoto(howMany);
         secretImage.saveChangedImage();
     }
